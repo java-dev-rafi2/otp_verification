@@ -50,7 +50,11 @@ public class OtpServiceImpl implements OtpService {
 		otpVerificationRepository.save(otpVerification);
 
 		otpSender.sendOtp(request.getMobileNumber(), otp);
-		return new OtpResponse(true, "Otp Sent Successfully");
+		
+		String displayOtp = otpVerification.getOtp();
+		
+		
+		return new OtpResponse(true, "Otp Sent Successfully ", displayOtp);
 	}
 
 	@Override
